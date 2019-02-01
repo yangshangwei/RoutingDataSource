@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- 当Mapper接口和XML文件关联的时候， namespace的值就需要配置成接口的全限定名称 -->
+<mapper namespace="com.artisan.dao.ArtisanMapper">
+	<select id="selectArtisanById"  resultType="Artisan"> 
+		select id , name ,sex from artisan where id= #{id}
+	</select>
+</mapper>

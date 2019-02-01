@@ -1,0 +1,27 @@
+# datasource  Master   前缀为自定义的datasource-master
+spring:
+  datasource-master:
+    driver-class-name: com.mysql.cj.jdbc.Driver # JDBC连接Mysql6以上com.mysql.cj.jdbc.Driver （服务端为Mysql8）
+    url: jdbc:mysql://localhost:3306/master?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+
+
+# datasource Replication 前缀为自定义的datasource-slave
+  datasource-slave: 
+    driver-class-name: com.mysql.cj.jdbc.Driver # JDBC连接Mysql6以上com.mysql.cj.jdbc.Driver  （服务端为Mysql8）
+    url: jdbc:mysql://localhost:3306/slave?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+
+# mybatis 
+mybatis:
+  # 映射文件的路径 ， 这个切换数据源的场景下不能配置 * 通配符，有多个 逗号隔开，继续跟 classpath:mapper/XXX
+  # mapper-locations: classpath:mapper/ArtisanMapper.xml  
+  # 在MybatisConfig.java#sqlSessionFactoryBean方法中通过sqlSessionFactoryBean设置classpath:mapper/*.xml ,不然每次都要改这个地方，不好维护。
+  
+  # 类型别名包配置，只能指定具体的包，多个配置可以使用英文逗号隔开
+  type-aliases-package: com.artisan.domain
+  # Mybatis SQL语句控制台打印
+  configuration: 
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
